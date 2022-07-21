@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>App Gestor De Tareas</title>
+    <!--Fuente de Google Fonts IndieFlower-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <!------------------------------------------------------------------->
+
+    <!--Hoja de estilo main.css-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+    <!--Bootstrap plantilla -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/simplex/bootstrap.min.css" integrity="sha384-FYrl2Nk72fpV6+l3Bymt1zZhnQFK75ipDqPXK0sOR0f/zeOSZ45/tKlsKucQyjSp" crossorigin="anonymous">
+    <meta charset="UTF-8">
+
+
+</head>
+
+
+  <main class="container p-4"> <!-- aqui tenemos clases de bootstrap -->
+            <h1 class="display-4 text-center mt-4 titulo " style="color:Yellow " >Editar Tarea</h1>
+            <!--titulo hace ref. al main.css es una clase propia-->
+
+            <div class="row">
+                <div class="col-md-4 offset-md-4 my-auto"> <!--Este div ocupará 4 columnas del espacio (centrado)-->
+                    <div class="card"> <!--Creacion del objeto card-->
+                        <div class="card-header">
+                            <!--Enviamos informacion a la ruta /crea-tarea y hara la funcion de crear-->
+                           <form action="/modificar/{{ tarea.id }}" method="post"> <!-- method es para envio de informacion, get seria para leer info. -->
+                                <!-- form-group es una clase de bootstrap, simplemente para decirle que pertenece a un grupo-->
+                                    <div class="form-group"> <!-- form-group divide los inputs en grupos-->
+                                        <input type="text" name="contenido" placeholder="Tarea" value="{{tarea.contenido}}" class="form-control" autofocus>
+                                        <input type="text" name="categoria" placeholder="Categoria" value="{{tarea.categoria}}" class="form-control" autofocus>
+                                        <input type="date" name="fecha" placeholder="Fecha" value="{{tarea.fecha}}" required pattern="\d{4}-\d{2}-\d{2}" class="form-control" autofocus>
+                                    </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    Modificar
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
